@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        ul {
+            margin-top: 30px;
+            list-style: none;
+            display: flex;
+        }
+
+        a {
+            padding: 16px;
+            background: brown;
+            color: white;
+            text-decoration: none;
+            transition: .3s;
+        }
+
+        a:hover {
+            background: chocolate;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2> menue </h2>
+    <form name="myForm">
+        <p>punkt menu <input type="text" name="elemMenu" value="main, about, news, products"></p>
+        <p>color of text<input type="text" name="fColor" value="white"></p>
+        <!-- <p>color of back <input type="text" name="bColor" value="brown"></p> -->
+        <p>color of back <input type="color" name="bColor" value="#6b0909"></p>
+        <p>color of hover <input type="text" name="hColor" value="orange"></p>
+        <p><input type="button" onclick="menu()" value="create menu"></p>
+
+    </form>
+
+    <div id="box"> </div>
+    <style id="myStyle"></style>
+<div id="big"></div>
+
+    <script>
+        function menu() {
+            let elemMenu = myForm.elemMenu.value;
+            let fColor = myForm.fColor.value;
+            let bColor = myForm.bColor.value;
+            let hColor = myForm.hColor.value;
+            // alert(elemMenu + " " + fColor + bColor + hColor);
+
+            let arrMenu = elemMenu.split(", ");
+            // alert(arrMenu);
+
+            let s = '<ul>', s1 = '';
+            for (i = 0; i < arrMenu.length; i++) {
+                s += `<li onclick="bigp(${i+1})"><a href="link${i + 1}.html">${arrMenu[i]}</a></li>`
+
+            }
+            s += '</ul>';
+
+            s1 = `a {
+                  background: ${bColor};
+            color: ${fColor};
+            
+            a:hover {
+            background: ${hColor};
+        }`;
+            myStyle.innerHTML = s1;
+            // <ul>
+            //     <li><a href="#">main</a></li>
+            //     <li><a href="#">about</a></li>
+            //     <li><a href="#">news</a></li>
+            //     <li><a href="#">products</a></li>
+
+            // </ul>
+            box.innerHTML = s;
+function bigp(p) {
+let s2 = '';
+s2 = `<img onclick="big.innerHTML = ''" style="width: 130%" src="images/${p}.jpg">`
+big.innerHTML = s2;
+}
+        }
+    </script>
+</body>
+
+</html>
